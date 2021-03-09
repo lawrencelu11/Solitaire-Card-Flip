@@ -131,12 +131,7 @@ void removeCard(CardField field)
             {
                 field[choice] = faceDown;
             }
-
-        }else{
-            return;
         }
-    }else{
-        return;
     }
 }
 
