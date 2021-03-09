@@ -115,22 +115,19 @@ void removeCard(CardField field)
     if(field[choice - 1] == faceUp)
     {
         field[choice - 1] = emptySpot;
-        if(field[choice] != emptySpot || field[choice - 2] != emptySpot)
+        if(field[choice - 2] == faceDown)
         {
-            if(field[choice - 2] == faceDown)
-            {
-                field[choice - 2] = faceUp;
-            }else if(field[choice - 2] == faceUp)
-            {
-                field[choice - 2] = faceDown;
-            }
-            if(field[choice] == faceDown)
-            {
-                field[choice] = faceUp;
-            }else if(field[choice] == faceUp)
-            {
-                field[choice] = faceDown;
-            }
+            field[choice - 2] = faceUp;
+        }else if(field[choice - 2] == faceUp)
+        {
+            field[choice - 2] = faceDown;
+        }
+        if(field[choice] == faceDown)
+        {
+            field[choice] = faceUp;
+        }else if(field[choice] == faceUp)
+        {
+            field[choice] = faceDown;
         }
     }
 }
