@@ -10,7 +10,6 @@ char faceDown = '0';
 int choice;
 
 const int totalCards = 10;
-const int totalRows = 2;
 
 typedef char CardField[totalCards];
 typedef int CardIndex[totalCards];
@@ -50,7 +49,7 @@ bool noFaceUp(CardField field)
            return false;
        }
    }
-   cout << "Unable to flip anymore cards!\n";
+   cout << "Unable to remove every card! You Lose!\n";
    return true;
 }
 
@@ -143,13 +142,11 @@ void removeCard(CardField field)
 
 void gameRules()
 {
-    cout << "Welcome to Card Flip Solitaire!\n";
     cout << "Objective of the game is to remove all cards.\n";
     cout << "Face up cards are 1 and Face down cards are 0\n";
-    cout << "You can only choose to flip a face up card\n";
-    cout << "If you flip a face up card, the adjacent cards will flip over\n";
-    cout << "You can only choose to remove face up cards only. Once removed, the spot becomes an empty spot shown as '.'\n";
+    cout << "You can only remove face up cards, which will flip the cards next to it over.\n";
     cout << "Press any key to continue\n";
     cin.get();
     cout << "\n";
 }
+
