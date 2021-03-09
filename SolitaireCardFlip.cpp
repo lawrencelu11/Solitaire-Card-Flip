@@ -10,20 +10,14 @@ char faceDown = '0';
 int choice;
 
 const int totalCards = 10;
-const int numFaceDown = 8;
+const int totalRows = 2;
 
 typedef char CardField[totalCards];
 typedef int CardIndex[totalCards];
-typedef int Cards[numFaceDown];
 
-void setBlankField(CardField field);
-void setFieldIndex(CardIndex index);
-void displayFieldIndex(CardIndex index);
 void displayField(CardField field);
-void displayCard(CardField field);
-void storeCardIndex(Cards card);
-void setFaceDown(CardField field, Cards card);
-void setFaceUp(CardField field);
+void storeIndex(CardIndex index);
+void setCards(CardField field, CardIndex index);
 void removeCard(CardField field);
 bool playerWin(CardField field);
 bool noFaceUp(CardField field);
@@ -32,18 +26,13 @@ void gameRules();
 int main()
 {
     CardField field;
-    Cards card;
     CardIndex index;
-    storeCardIndex(card);
-    setBlankField(field);
-    setFieldIndex(index);
-    setFaceDown(field, card);
-    setFaceUp(field);
+    storeIndex(index);
+    setCards(field, index);
     gameRules();
     while(playerWin(field) == false && noFaceUp(field) == false)
     {
         displayField(field);
-        displayFieldIndex(index);
         cin >> choice;
         cout << "\n";
         removeCard(field);
@@ -65,62 +54,36 @@ bool noFaceUp(CardField field)
    return true;
 }
 
-void setBlankField(CardField field)
-{
-    for(int i = 0; i < totalCards; i++)
-    {
-        field[i] = emptySpot;
-    }
-}
-
 void displayField(CardField field)
 {
     for(int i = 0; i < totalCards; i++)
     {
+
         cout << field[i] << " ";
+    }
+    cout <<"\n";
+    for(int j = 1; j <= totalCards; j++)
+    {
+        cout << j << " ";
     }
     cout << "\n\n";
 }
 
-void setFieldIndex(CardIndex index)
-{
-    for(int i = 0; i < totalCards; i++)
-    {
-        index[i] = i;
-    }
-}
-
-void displayFieldIndex(CardIndex index)
-{
-    for(int i = 1; i <= totalCards; i++)
-    {
-        index[i] = i;
-        cout << index[i] << " ";
-    }
-    cout << "\n";
-}
-
-void storeCardIndex(Cards card)
+void storeIndex(CardIndex index)
 {
     srand(unsigned(time(0)));
-    for(int i = 0; i < numFaceDown; i++)
+    for(int i = 0; i < totalCards; i++)
     {
-        card[i] = rand() % 17;
+        index[i] = rand() % 17;
     }
 }
 
-void setFaceDown(CardField field, Cards card)
-{
-    for(int i = 0; i < numFaceDown; i++)
-    {
-        field[card[i]] = faceDown;
-    }
-}
-
-void setFaceUp(CardField field)
+void setCards(CardField field, CardIndex index)
 {
     for(int i = 0; i < totalCards; i++)
     {
+        field[i] = emptySpot;
+        field[index[i]] = faceDown;
         if(field[i] == emptySpot)
         {
             field[i] = faceUp;
