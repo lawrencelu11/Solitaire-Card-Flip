@@ -15,7 +15,6 @@ typedef char CardField[totalCards];
 typedef int CardIndex[totalCards];
 
 void displayField(CardField field);
-void storeIndex(CardIndex index);
 void setCards(CardField field, CardIndex index);
 void removeCard(CardField field);
 bool playerWin(CardField field);
@@ -26,7 +25,6 @@ int main()
 {
     CardField field;
     CardIndex index;
-    storeIndex(index);
     setCards(field, index);
     gameRules();
     while(playerWin(field) == false && noFaceUp(field) == false)
@@ -68,19 +66,12 @@ void displayField(CardField field)
     cout << "\n\n";
 }
 
-void storeIndex(CardIndex index)
+void setCards(CardField field, CardIndex index)
 {
     srand(unsigned(time(0)));
     for(int i = 0; i < totalCards; i++)
     {
         index[i] = rand() % 17;
-    }
-}
-
-void setCards(CardField field, CardIndex index)
-{
-    for(int i = 0; i < totalCards; i++)
-    {
         field[i] = emptySpot;
         field[index[i]] = faceDown;
         if(field[i] == emptySpot)
