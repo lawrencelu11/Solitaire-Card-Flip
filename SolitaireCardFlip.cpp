@@ -71,7 +71,7 @@ void setCards(CardField field, CardIndex index)
     srand(unsigned(time(0)));
     for(int i = 0; i < totalCards; i++)
     {
-        index[i] = rand() % 17;
+        index[i] = rand() % 9;
         field[i] = emptySpot;
         field[index[i]] = faceDown;
         if(field[i] == emptySpot)
