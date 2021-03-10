@@ -7,7 +7,6 @@ using namespace std;
 char emptySpot = '.';
 char faceUp = '1';
 char faceDown = '0';
-int choice;
 
 const int totalCards = 10;
 
@@ -16,13 +15,14 @@ typedef int CardIndex[totalCards];
 
 void displayField(CardField field);
 void setCards(CardField field, CardIndex index);
-void removeCard(CardField field);
+void removeCard(CardField field, int choice);
 bool playerWin(CardField field);
 bool noFaceUp(CardField field);
 void gameRules();
 
 int main()
 {
+    int choice;
     CardField field;
     CardIndex index;
     setCards(field, index);
@@ -32,7 +32,7 @@ int main()
         displayField(field);
         cin >> choice;
         cout << "\n";
-        removeCard(field);
+        removeCard(field, choice);
     }
 
     return 0;
@@ -101,7 +101,7 @@ bool playerWin(CardField field)
 }
 
 
-void removeCard(CardField field)
+void removeCard(CardField field, int choice)
 {
     if(field[choice - 1] == faceUp)
     {
