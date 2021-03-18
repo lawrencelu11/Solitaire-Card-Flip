@@ -18,7 +18,6 @@ void setCards(CardField field, CardIndex index);
 void removeCard(CardField field, int choice);
 bool playerWin(CardField field);
 bool noFaceUp(CardField field);
-void gameRules();
 
 int main()
 {
@@ -26,7 +25,7 @@ int main()
     CardField field;
     CardIndex index;
     setCards(field, index);
-    gameRules();
+    
     while(playerWin(field) == false && noFaceUp(field) == false)
     {
         displayField(field);
@@ -122,14 +121,3 @@ void removeCard(CardField field, int choice)
         }
     }
 }
-
-void gameRules()
-{
-    cout << "Objective of the game is to remove all cards.\n";
-    cout << "Face up cards are 1 and Face down cards are 0\n";
-    cout << "You can only remove face up cards, which will flip the cards next to it over.\n";
-    cout << "Press any key to continue\n";
-    cin.get();
-    cout << "\n";
-}
-
