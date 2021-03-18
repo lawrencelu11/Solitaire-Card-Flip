@@ -29,6 +29,7 @@ int main()
     while(playerWin(field) == false && noFaceUp(field) == false)
     {
         displayField(field);
+        cout << "Enter card position: ";
         cin >> choice;
         cout << "\n";
         removeCard(field, choice);
